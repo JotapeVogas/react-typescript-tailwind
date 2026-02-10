@@ -6,9 +6,10 @@ interface TimeProps {
     corPrimaria: string;
     corSecundaria: string;
     colaboradores: IColaborador[];
+    aoDeletar: (nome: string) => void;
 }
 
-const Time = ({ nome, corPrimaria, corSecundaria, colaboradores }: TimeProps) => {
+const Time = ({ nome, corPrimaria, corSecundaria, colaboradores, aoDeletar }: TimeProps) => {
 
     return (
         colaboradores.length > 0 ? (
@@ -32,6 +33,7 @@ const Time = ({ nome, corPrimaria, corSecundaria, colaboradores }: TimeProps) =>
                             email={colaborador.email}
                             data_admissao={colaborador.data_admissao}
                             imagem={colaborador.imagem}
+                            aoDeletar={aoDeletar}
                         />
                     ))}
                 </div>

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Botao from '../Botao'
+import Botao from '../BotaoCriarCard'
 import CampoTexto from '../CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
 import { IColaborador } from '../../shared/interfaces'
