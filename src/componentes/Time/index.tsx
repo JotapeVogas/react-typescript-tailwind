@@ -6,7 +6,7 @@ interface TimeProps {
     corPrimaria: string;
     corSecundaria: string;
     colaboradores: IColaborador[];
-    aoDeletar: (nome: string) => void;
+    aoDeletar: (id:number) => void;
 }
 
 const Time = ({ nome, corPrimaria, corSecundaria, colaboradores, aoDeletar }: TimeProps) => {
@@ -18,16 +18,19 @@ const Time = ({ nome, corPrimaria, corSecundaria, colaboradores, aoDeletar }: Ti
                 style={{ backgroundColor: corSecundaria }}
             >
                 <h3 
-                    className="text-[32px] border-b-4 inline-block pb-2" 
-                    style={{ borderColor: corPrimaria }}
+                    className={`text-[32px] text-[${corPrimaria}] border-b-4 inline-block pb-2`} 
+                    style={{ borderColor: corPrimaria, 
+                             color: corPrimaria
+                }}
                 >
-                    {nome}
+                    {nome} ({colaboradores.length} {colaboradores.length === 1 ? 'colaborador' : 'colaboradores'})
                 </h3>
                 <div className="flex justify-around mt-8 flex-wrap">
                     {colaboradores.map(colaborador => (
                         <Colaborador 
                             corDeFundo={corPrimaria}
-                            key={colaborador.nome} 
+                            id={colaborador.id}
+                            key={colaborador.id}
                             nome={colaborador.nome} 
                             cargo={colaborador.cargo} 
                             email={colaborador.email}

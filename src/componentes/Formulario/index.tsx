@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Botao from '../BotaoCriarCard'
 import CampoTexto from '../CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
@@ -11,6 +11,7 @@ interface FormularioProps {
 
 const Formulario = ({ times, aoColaboradorCadastrado }: FormularioProps) => {
 
+    const proximoId = useRef<number>(1);
     const [nome, setNome] = useState('')
     const [cargo, setCargo] = useState('')
     const [imagem, setImagem] = useState('')
@@ -21,6 +22,7 @@ const Formulario = ({ times, aoColaboradorCadastrado }: FormularioProps) => {
     const aoSalvar = (evento: React.FormEvent<HTMLFormElement>) => {
         evento.preventDefault()
         aoColaboradorCadastrado({  
+            id: proximoId.current,
             nome,
             cargo,
             imagem, 
@@ -28,6 +30,7 @@ const Formulario = ({ times, aoColaboradorCadastrado }: FormularioProps) => {
             email,
             data_admissao
         })
+        proximoId.current += 1;
         setNome('')
         setCargo('')
         setImagem('')
@@ -75,6 +78,7 @@ const Formulario = ({ times, aoColaboradorCadastrado }: FormularioProps) => {
                     aoAlterado={valor => setEmail(valor)}
                 />
                 <CampoTexto
+                    tipo="date"
                     label="Data de Admissão" 
                     placeholder="Digite a data de admissão"
                     valor={data_admissao}

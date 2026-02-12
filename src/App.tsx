@@ -10,7 +10,7 @@ function App() {
     {
         nome: 'Programação',
         corPrimaria: '#57c278',
-        corSecundaria: '#ddffef',
+        corSecundaria: '#ccffe7',
     },
     {
         nome: 'Front-End',
@@ -51,8 +51,8 @@ function App() {
     setColaboradores([...colaboradores, colaborador])
   }
 
-  const aoDeletarColaborador = (nome: string) => {
-    setColaboradores(colaboradores.filter(colaborador => colaborador.nome !== nome))
+  const aoDeletarColaborador = (id: number) => {
+    setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id))
   }
 
   return (
